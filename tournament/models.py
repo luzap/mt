@@ -12,15 +12,23 @@ class School(models.Model):
         pass
 
 
-class Individual(models.Model):
-    name = models.CharField(max_length=20, blank=False)
-    surname = models.CharField(max_length=30, blank=False)
-    school = models.OneToOneField(School)
-    email = models.EmailField(blank=False)
-    # languages = models.
+class Language(models.Model):
+    language = models.CharField(max_length=15)
 
     class Meta:
         pass
+
+
+class Individual(models.Model):
+    name = models.CharField(max_length=20, blank=False)
+    surname = models.CharField(max_length=30, blank=False)
+    school = models.ForeignKey(School)
+    email = models.EmailField(blank=False)
+    languages = models.ForeignKey(Language)
+
+    class Meta:
+        pass
+
 
 
 
