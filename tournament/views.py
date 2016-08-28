@@ -1,6 +1,7 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 
 from tournament.forms import PostForm
+from .utils import gen_code
 
 
 def handler404(request):
@@ -14,8 +15,14 @@ def index(request):
 
 
 def registration(request):
-    form = PostForm()
-    return render(request, 'registration.html', {'form': form})
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect("confirm.html")
+    else:
+        form = PostForm()
+        return render(request, 'registration.html', {'form': form})
 
 
 def read_article(request):
