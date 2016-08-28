@@ -8,7 +8,7 @@ def handler404(request):
 
 
 def index(request):
-    pass
+    return render(request, 'index.html')
 
 
 def registration(request):
