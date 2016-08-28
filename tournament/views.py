@@ -1,5 +1,7 @@
 from django.shortcuts import render, render_to_response
 
+from tournament.forms import PostForm
+
 
 def handler404(request):
     response = render_to_response('404.html', {})
@@ -12,8 +14,10 @@ def index(request):
 
 
 def registration(request):
-    return render()
+    form = PostForm()
+    return render(request, 'registration.html', {'form': form})
 
 
 def read_article(request):
     pass
+

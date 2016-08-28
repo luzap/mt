@@ -11,6 +11,7 @@ class School(models.Model):
     def __init__(self):
         self.code = utils.gen_code(self.name)
 
+
     def __repr__(self):
         return self.name
 
