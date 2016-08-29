@@ -1,10 +1,15 @@
 from django import forms
 
-from .models import School
+from .models import School, Individual
 
 
-class PostForm(forms.ModelForm):
+class CodeForm(forms.ModelForm):
     class Meta:
         model = School
         fields = ('code',)
 
+
+class RegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Individual
+        fields = ('name', 'surname', )

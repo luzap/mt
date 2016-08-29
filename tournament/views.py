@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response, redirect
 
-from tournament.forms import PostForm
+from tournament.forms import CodeForm
 from .utils import gen_code
 
 
@@ -14,14 +14,18 @@ def index(request):
     return render(request, 'index.html')
 
 
+def school(request):
+    form = CodeForm()
+
+
 def registration(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = CodeForm(request.POST)
         if form.is_valid():
             form.save()
         return redirect("confirm.html")
     else:
-        form = PostForm()
+        form = CodeForm()
         return render(request, 'registration.html', {'form': form})
 
 

@@ -55,8 +55,3 @@ class Post(models.Model):
     @python_2_unicode_compatible
     def __str__(self):
         return self.title
-
-
-
-
-
