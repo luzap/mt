@@ -5,11 +5,14 @@ from django.utils.encoding import python_2_unicode_compatible
 from . import utils
 
 
-# TODO Add query for number of competitors
+# new_school = School.objects.get(name=school_name)
+# school.code =
+#
+#
+#
 class School(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
     code = models.CharField(max_length=10)
-    email = models.EmailField(default="example@email.com")
 
     @python_2_unicode_compatible
     def __str__(self):
@@ -36,6 +39,7 @@ class Individual(models.Model):
     surname = models.CharField(max_length=30, blank=False)
     school = models.ForeignKey(School)
     email = models.EmailField(blank=False)
+    languages = models.ManyToManyField(Language)
 
     @python_2_unicode_compatible
     def __str__(self):

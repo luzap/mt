@@ -12,4 +12,4 @@ class CodeForm(forms.ModelForm):
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Individual
-        fields = ('name', 'surname', )
+        fields = ('name', 'surname', 'languages')

@@ -1,7 +1,6 @@
 from django.shortcuts import render, render_to_response, redirect
 
 from tournament.forms import CodeForm
-from .utils import gen_code
 
 
 def handler404(request):

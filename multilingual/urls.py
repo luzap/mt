@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+admin.autodiscover()
 
+handler404 = 'tournament.views.handler404'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tournament/', include('tournament.urls'))
