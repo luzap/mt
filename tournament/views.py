@@ -18,11 +18,11 @@ def index(request):
 def get_school_code(request):
     if request.method == "POST":
         form = CodeForm(request.POST)
-        if form.is_valid() and (School.objects.filter(code=form.cleaned_data["code"]).count() != 0):
+        if form.is_valid() and (School.objects.filter(code=form.cleaned_data['code']).count() != 0):
             code = form.cleaned_data['code']
             registration(request, code=code)
         else:
-            return redirect('index.html')
+            return redirect("error.html")
     else:
         form = CodeForm()
         return render(request, 'code.html', {'form': form})
@@ -39,6 +39,7 @@ def registration(request, code=None):
         return render(request, 'registration.html', {'form': form, 'code': code})
 
 
-def read_article(request):
+def read_article(request, post_id):
+    del post_id
     pass
 
