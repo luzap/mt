@@ -4,7 +4,7 @@ from .models import School, Individual, Post, Language
 
 class SchoolAdmin(admin.ModelAdmin):
     model = School
-    list_display = ('name',)
+    list_display = ('name', 'code')
     readonly_fields = ('code',)
 
 

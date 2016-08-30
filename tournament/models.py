@@ -5,11 +5,9 @@ from django.utils.encoding import python_2_unicode_compatible
 from . import utils
 
 
+# TODO Add automatic code generation
 # new_school = School.objects.get(name=school_name)
-# school.code =
-#
-#
-#
+# school.code = utils.gen_code(school.name)
 class School(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
     code = models.CharField(max_length=10)
@@ -59,3 +57,4 @@ class Post(models.Model):
     @python_2_unicode_compatible
     def __str__(self):
         return self.title
+
