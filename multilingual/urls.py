@@ -1,24 +1,16 @@
-"""multilingual URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.10/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+A single Django site is made to allow multiple apps. This is the top level URL matcher, where each of the
+regular expression strings is matched against the input typed into the user's browser.
+"""
+
+
 from django.conf.urls import url, include
 from django.contrib import admin
 admin.autodiscover()
 
-handler404 = 'tournament.views.handler404'
+# TODO Make custom error pages (405, et cetera)
+handler404 = 'tournament.views.handler404'  # Enables having custom 404 pages
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^tournament/', include('tournament.urls'))
+    url(r'^admin/', admin.site.urls),  # Highest level view for the administrator of the site
+    url(r'^tournament/', include('tournament.urls'))  # At this point, refers to tournament/urls.py
 ]

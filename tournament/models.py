@@ -12,8 +12,8 @@ class School(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
     code = models.CharField(max_length=10)
 
-    @python_2_unicode_compatible
-    def __str__(self):
+    @python_2_unicode_compatible # Not strictly necessary, but just to be on the safe side
+    def __str__(self):  # Done for simpler representation of the data field in admin site
         return self.name
 
     class Meta:
@@ -21,7 +21,7 @@ class School(models.Model):
 
 
 class Language(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)  # This will be automatically set and incremented
     language = models.CharField(max_length=15, default=" ")
 
     @python_2_unicode_compatible
@@ -37,7 +37,7 @@ class Individual(models.Model):
     surname = models.CharField(max_length=30, blank=False)
     school = models.ForeignKey(School)
     email = models.EmailField(blank=False)
-    languages = models.ManyToManyField(Language)
+    languages = models.ManyToManyField(Language)  # Allows for multiple language selection (any way to limit up to 3?)
 
     @python_2_unicode_compatible
     def __str__(self):

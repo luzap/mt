@@ -1,34 +1,39 @@
 from django.shortcuts import render, render_to_response, redirect
-from django.core import mail
 
 from .models import School
 from tournament.forms import CodeForm, RegistrationForm
 
 
 def handler404(request):
+    """Custom 404 error handler."""
     response = render_to_response('404.html', {})
     response.status_code = 404
     return response
 
 
 def index(request):
+    """Renders index page."""
     return render(request, 'index.html')
 
 
+# TODO Make pages this function refers to
 def get_school_code(request):
     if request.method == "POST":
         form = CodeForm(request.POST)
+        # Checks for form validity and whether or not the code exists.
         if form.is_valid() and (School.objects.filter(code=form.cleaned_data['code']).count() != 0):
             code = form.cleaned_data['code']
             registration(request, code=code)
         else:
-            return redirect("error.html")
+            return redirect("error.html", {'reason': "School does not exist. Please check with your coordinator."})
     else:
         form = CodeForm()
         return render(request, 'code.html', {'form': form})
 
 
+# TODO Make sure if code=NONE, don't render anything
 def registration(request, code=None):
+    """Displays the registration form and adds it to database."""
     if request.method == "POST":
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -40,6 +45,6 @@ def registration(request, code=None):
 
 
 def read_article(request, post_id):
-    del post_id
+    """Stub function for posts."""
     pass
 
