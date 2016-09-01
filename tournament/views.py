@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response, redirect
 
-from .models import School
 from tournament.forms import CodeForm, RegistrationForm
+from .models import School, Post
 
 
 def handler404(request):
@@ -45,6 +45,6 @@ def registration(request, code=None):
 
 
 def read_article(request, post_id):
-    """Stub function for posts."""
-    pass
-
+    """Returns post """
+    post = Post.objects.filter(id=post_id)
+    return render("post.html", {"post": post})
