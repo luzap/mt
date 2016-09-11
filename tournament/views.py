@@ -23,7 +23,7 @@ def get_school_code(request):
         # Checks for form validity and whether or not the code exists.
         if form.is_valid() and (School.objects.filter(code=form.cleaned_data['code']).count() != 0):
             code = form.cleaned_data['code']
-            registration(request, code=code)
+            school_admin(request, code=code)
         else:
             return redirect("error.html", {'reason': "School does not exist. Please check with your coordinator."})
     else:
@@ -32,7 +32,7 @@ def get_school_code(request):
 
 
 # TODO Make sure if code=NONE, don't render anything
-def registration(request, code=None):
+def school_admin(request, code=None):
     """Displays the registration form and adds it to database."""
     if request.method == "POST":
         form = RegistrationForm(request.POST)
