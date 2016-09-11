@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import School, Individual
+from .models import School, Individual, Language
 
 
 class CodeForm(forms.ModelForm):
@@ -12,4 +12,4 @@ class CodeForm(forms.ModelForm):
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Individual
-        fields = ('name', 'surname', 'email', 'languages')  # The code will be attached automatically.
+        fields = ('name', 'surname', 'email')  # The code will be attached automatically.
