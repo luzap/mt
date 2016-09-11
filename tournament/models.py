@@ -1,5 +1,7 @@
 import django
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+
 from . import utils
 
 
@@ -7,12 +9,10 @@ from . import utils
 class School(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
     code = models.CharField(max_length=10)
+    email = models.EmailField(default="example@email.com")
 
-    def __init__(self):
-        self.code = utils.gen_code(self.name)
-
-
-    def __repr__(self):
+    @python_2_unicode_compatible
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -23,7 +23,8 @@ class Language(models.Model):
     id = models.AutoField(primary_key=True)
     language = models.CharField(max_length=15, default=" ")
 
-    def __repr__(self):
+    @python_2_unicode_compatible
+    def __str__(self):
         return self.language
 
     class Meta:
@@ -36,7 +37,8 @@ class Individual(models.Model):
     school = models.ForeignKey(School)
     email = models.EmailField(blank=False)
 
-    def __repr__(self):
+    @python_2_unicode_compatible
+    def __str__(self):
         return "{} {}".format(self.name, self.surname)
 
     class Meta:
@@ -48,8 +50,10 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     date_published = models.DateField(default=django.utils.timezone.now)
+    body = models.TextField()
 
-    def __repr__(self):
+    @python_2_unicode_compatible
+    def __str__(self):
         return self.title
 
 
