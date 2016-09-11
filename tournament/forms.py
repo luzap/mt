@@ -1,10 +1,15 @@
 from django import forms
 
-from .models import School
+from .models import School, Individual, Language
 
 
-class PostForm(forms.ModelForm):
+class CodeForm(forms.ModelForm):
     class Meta:
         model = School
-        fields = ('code',)
+        fields = ('code',)  # Allows user to enter only one field of data
 
+
+class RegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Individual
+        fields = ('name', 'surname', 'email')  # The code will be attached automatically.
