@@ -41,7 +41,7 @@ def school_admin(request, code=None):
         return redirect("confirm.html")
     else:
         form = RegistrationForm()
-        return render(request, 'registration.html', {'form': form, 'code': code})
+        return render(request, 'registration.html', {'form': form, 'school': School.objects.filter(code=code)})
 
 
 def read_article(request, post_id):
