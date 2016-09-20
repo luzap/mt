@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 connection = mail.get_connection()
 
 
+# TODO Move email handling to django_mail_template
 def send_confirmation_email(user_dict, path_to_body):
     """Send a generic message."""
     cont = Context(user_dict)  # Allows for passing of content to HTML template
@@ -17,4 +18,4 @@ def send_confirmation_email(user_dict, path_to_body):
     email.to = [user_dict['email']]
     email.send()
 
-
+connection.close()

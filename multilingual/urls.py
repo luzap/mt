@@ -8,7 +8,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 admin.autodiscover()
 
-# TODO Make custom error pages (405, et cetera)
+# TODO Allow default website to be viewed
 handler404 = 'tournament.views.handler404'  # Enables having custom 404 pages
 urlpatterns = [
     url(r'^admin/', admin.site.urls),  # Highest level view for the administrator of the site
