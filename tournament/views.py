@@ -15,6 +15,10 @@ def index(request):
     """Renders index page."""
     return render(request, 'index.html')
 
+def register(request):
+    """Renders registration page."""
+    return render(request, 'registration.html')
+
 
 # TODO Make pages this function refers to
 def get_school_code(request):
@@ -23,7 +27,7 @@ def get_school_code(request):
         # Checks for form validity and whether or not the code exists.
         if form.is_valid() and (School.objects.filter(code=form.cleaned_data['code']).count() != 0):
             code = form.cleaned_data['code']
-            registration(request, code=code)
+            addmember(request, code=code)
         else:
             return redirect("error.html", {'reason': "School does not exist. Please check with your coordinator."})
     else:
@@ -32,7 +36,7 @@ def get_school_code(request):
 
 
 # TODO Make sure if code=NONE, don't render anything
-def registration(request, code=None):
+def addmember(request, code=None):
     """Displays the registration form and adds it to database."""
     if request.method == "POST":
         form = RegistrationForm(request.POST)
@@ -41,7 +45,7 @@ def registration(request, code=None):
         return redirect("confirm.html")
     else:
         form = RegistrationForm()
-        return render(request, 'registration.html', {'form': form, 'code': code})
+        return render(request, 'addmember.html', {'form': form, 'code': code})
 
 
 def read_article(request, post_id):

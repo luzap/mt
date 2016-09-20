@@ -1,3 +1,43 @@
 {% extends "index.html" %}
+
+{%  load static %}
+
 {% block content %}
-{%  endblock %}
+    <div class="container">
+
+    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+        {% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Registracija</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Kodas</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+  <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning"  >Toliau</span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+{% endblock   %}
