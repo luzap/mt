@@ -12,7 +12,8 @@ def send_confirmation_email(user_dict, path_to_body):
     txt_content = render_to_string(path_to_body + ".txt", cont)    # html form rendering
 
     email = mail.EmailMultiAlternatives("Registration confirmation", txt_content)
-    email.attach_alternative(html_content, 'text/html')
+    email.attach_alternative(html_content, 'text/html')  # TODO Figure out why this is needed
     email.to = [user_dict['email']]
     email.send()
+
 
