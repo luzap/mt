@@ -5,15 +5,14 @@ from django.utils.encoding import python_2_unicode_compatible
 from . import utils
 
 
-# TODO Add automatic code generation
-# new_school = School.objects.get(name=school_name)
-# school.code = utils.gen_code(school.name)
+# TODO Add query for number of competitors
 class School(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
     code = models.CharField(max_length=10)
+    email = models.EmailField(default="example@email.com")
 
-    @python_2_unicode_compatible # Not strictly necessary, but just to be on the safe side
-    def __str__(self):  # Done for simpler representation of the data field in admin site
+    @python_2_unicode_compatible
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -21,7 +20,7 @@ class School(models.Model):
 
 
 class Language(models.Model):
-    id = models.AutoField(primary_key=True)  # This will be automatically set and incremented
+    id = models.AutoField(primary_key=True)
     language = models.CharField(max_length=15, default=" ")
 
     @python_2_unicode_compatible
@@ -37,7 +36,6 @@ class Individual(models.Model):
     surname = models.CharField(max_length=30, blank=False)
     school = models.ForeignKey(School)
     email = models.EmailField(blank=False)
-    languages = models.ManyToManyField(Language)  # Allows for multiple language selection (any way to limit up to 3?)
 
     @python_2_unicode_compatible
     def __str__(self):
@@ -57,4 +55,8 @@ class Post(models.Model):
     @python_2_unicode_compatible
     def __str__(self):
         return self.title
+
+
+
+
 
