@@ -19,6 +19,9 @@ def register(request):
     """Renders registration page."""
     return render(request, 'registration.html')
 
+def memberlist(request):
+    """Renders registration page."""
+    return render(request, 'memberlist.html')
 
 # TODO Make pages this function refers to
 def get_school_code(request):
