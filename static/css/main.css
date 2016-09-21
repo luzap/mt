@@ -1,10 +1,19 @@
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
 html {
-    color: #222;
     font-size: 1em;
     line-height: 1.4;
+    height: 100%;
+    box-sizing: border-box;
 }
+
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 
 ::-moz-selection {
     background: #b3d4fc;
@@ -58,12 +67,18 @@ textarea {
 
 body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
 }
 
 .wrapper {
     width: 90%;
     margin: 0 5%;
+    margin: 0 auto;
 }
+
 
 /* ===================
     ALL: Orange Theme
@@ -71,6 +86,10 @@ body {
 
 .header-container {
     border-bottom: 20px solid #2f4858;
+
+}
+.control-label {
+    color:black
 }
 
 .footer-container,
@@ -133,6 +152,7 @@ nav a:hover {
 
 .main {
     padding: 50px 0;
+
 }
 
 .main article h1 {
@@ -145,16 +165,20 @@ nav a:hover {
 }
 
 .footer-container  {
-    position: relative;
-    margin-top: -50px; /* negative value of footer height */
-    clear: both;
-    height: 100px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 1rem;
+      background-color: #33658a;
+      text-align: center;
+
 }
 
 .main-container {
     color: white;
     overflow: auto;
-    padding-bottom: 50px; /* must be same height as the footer */
+    min-height: 100%;
 }
 
 /* ===============

@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+
 table {
   color: #333;
   font-family: sans-serif;
@@ -43,7 +48,7 @@ td:last-child {
   cursor: pointer;
 }
 
-  .fa-pencil:hover {
+.fa-pencil:hover {
   color: #0a79df;
 }
 
