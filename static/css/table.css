@@ -43,10 +43,10 @@ td:last-child {
   cursor: pointer;
 }
 
-.alterar:hover {
+  .fa-pencil:hover {
   color: #0a79df;
 }
 
-.excluir:hover {
+.fa-trash:hover {
   color: #dc2a2a;
 }

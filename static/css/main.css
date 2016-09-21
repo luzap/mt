@@ -80,7 +80,7 @@ body {
      right: 0;
     bottom: 0;
     left: 0;
-     padding: 1rem;
+     padding: 2rem;
     background-color: #efefef;
     text-align: center;
 }
@@ -132,7 +132,7 @@ nav a:hover {
    ============== */
 
 .main {
-    padding: 30px 0;
+    padding: 50px 0;
 }
 
 .main article h1 {
@@ -144,9 +144,17 @@ nav a:hover {
     padding: 0px 5% 10px;
 }
 
-.footer-container footer {
+.footer-container  {
+    position: relative;
+    margin-top: -50px; /* negative value of footer height */
+    clear: both;
+    height: 100px;
+}
+
+.main-container {
     color: white;
-    padding: 20px 0;
+    overflow: auto;
+    padding-bottom: 50px; /* must be same height as the footer */
 }
 
 /* ===============
@@ -264,6 +272,7 @@ nav a:hover {
     .wrapper {
         width: 1026px; /* 1140px - 10% for margins */
         margin: 0 auto;
+        min-height: 100%;
     }
 }
 
